@@ -1,0 +1,35 @@
+import org.apache.tools.ant.filters.*
+
+apply plugin: "java"
+apply plugin: "jetty"
+apply plugin: "war"
+
+archivesBaseName = "CrunchifySpringMVCTutorial"
+version = '0.0.1-SNAPSHOT'
+
+project.description = 'Este é um tutorial feito pelo Crunchify para Spring MVC'
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+	compile "org.springframework:spring-context:4.2.5.RELEASE"
+	compile "org.springframework:spring-aop:4.2.5.RELEASE"
+	compile "org.springframework:spring-webmvc:4.2.5.RELEASE"
+	compile "org.springframework:spring-web:4.2.5.RELEASE"
+	compile "javax.servlet:jstl:1.2"
+	compile "commons-logging:commons-logging"
+	testCompile group: 'junit', name: 'junit', version: '4.+'
+}
+
+jettyRun {
+	contextPath = 'crunchify'
+	httpPort = 9090
+	reload = "automatic"
+	scanIntervalSeconds = 1
+}
+
+war {
+   filter(ReplaceTokens, tokens: ['version': project.version])
+}

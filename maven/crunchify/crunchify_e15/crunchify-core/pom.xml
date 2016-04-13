@@ -9,13 +9,13 @@
 	</parent>
 
 	<groupId>CrunchifySpringMVCTutorial</groupId>
-	<artifactId>CrunchifySpringMVCTutorial</artifactId>
+	<artifactId>CrunchifySpringMVCTutorial-core</artifactId>
 
-	<name>Crunchify SpringMVC Tutorial</name>
- 	<description>Este é um tutorial feito pelo Crunchify para Spring MVC</description>
+	<name>Crunchify SpringMVC Tutorial - CORE</name>
+ 	<description>Este é a parte core de um tutorial feito pelo Crunchify para Spring MVC</description>
  	<url>http://crunchify.com/simplest-spring-mvc-hello-world-example-tutorial-spring-model-view-controller-tips/</url>	
  	
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<properties>
 		<hibernate_version>4.2.5.RELEASE</hibernate_version>
@@ -30,31 +30,6 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
-			<plugin>
-				<artifactId>maven-war-plugin</artifactId>
-				<configuration>
-					<failOnMissingWebXml>false</failOnMissingWebXml>
-					<webResources>
-						<resource>
-							<directory>src/main/webapp</directory>
-							<filtering>true</filtering>
-						</resource>
-					</webResources>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.eclipse.jetty</groupId>
-				<artifactId>jetty-maven-plugin</artifactId>
-				<configuration>				
-					<webApp>
-						<contextPath>/crunchify</contextPath>
-					</webApp>
-					<httpConnector>
-						<port>9090</port>
-					</httpConnector>
-					<scanIntervalSeconds>1</scanIntervalSeconds>
-				</configuration>
-			</plugin>
 			<plugin>    
               <artifactId>maven-site-plugin</artifactId>
               <version>3.2</version>
@@ -66,15 +41,6 @@
                 </dependency>
               </dependencies>
             </plugin>			
-			<plugin>
-		        <artifactId>maven-assembly-plugin</artifactId>
-		        <version>2.6</version>
-		        <configuration>
-					<descriptors>
-						<descriptor>src/assembly/dist.xml</descriptor>
-					</descriptors>
-		        </configuration>			
-		    </plugin>
 		</plugins>
 	</build>
 	<dependencies>
@@ -98,12 +64,6 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
 			<version>${hibernate_version}</version>
-		</dependency>
- 
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
 		</dependency>
  
 		<dependency>

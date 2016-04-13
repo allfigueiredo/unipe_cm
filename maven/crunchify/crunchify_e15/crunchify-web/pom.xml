@@ -9,17 +9,13 @@
 	</parent>
 
 	<groupId>CrunchifySpringMVCTutorial</groupId>
-	<artifactId>CrunchifySpringMVCTutorial</artifactId>
+	<artifactId>CrunchifySpringMVCTutorial-web</artifactId>
 
-	<name>Crunchify SpringMVC Tutorial</name>
+	<name>Crunchify SpringMVC Tutorial - WEB</name>
  	<description>Este é um tutorial feito pelo Crunchify para Spring MVC</description>
  	<url>http://crunchify.com/simplest-spring-mvc-hello-world-example-tutorial-spring-model-view-controller-tips/</url>	
  	
 	<packaging>war</packaging>
-
-	<properties>
-		<hibernate_version>4.2.5.RELEASE</hibernate_version>
-	</properties>
 
 	<build>
 		<plugins>
@@ -55,6 +51,20 @@
 					<scanIntervalSeconds>1</scanIntervalSeconds>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.1</version>
+				<executions>
+		          <execution>
+		            <id>tomcat-run</id>
+		            <goals>
+		              <goal>exec-war-only</goal>
+		            </goals>
+		            <phase>package</phase>
+		          </execution>
+		        </executions>
+        	</plugin>
 			<plugin>    
               <artifactId>maven-site-plugin</artifactId>
               <version>3.2</version>
@@ -80,24 +90,9 @@
 	<dependencies>
 		
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>${hibernate_version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-aop</artifactId>
-			<version>${hibernate_version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
-			<version>${hibernate_version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
-			<version>${hibernate_version}</version>
+			<groupId>CrunchifySpringMVCTutorial</groupId>
+			<artifactId>CrunchifySpringMVCTutorial-core</artifactId>
+			<version>${project.version}</version>
 		</dependency>
  
 		<dependency>
@@ -106,10 +101,6 @@
 			<version>1.2</version>
 		</dependency>
  
-		<dependency>
-			<groupId>commons-logging</groupId>
-			<artifactId>commons-logging</artifactId>
-		</dependency>
 	</dependencies>
 	
 </project>
